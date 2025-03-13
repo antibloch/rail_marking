@@ -50,7 +50,7 @@ def main():
         plt.imshow(overlay)
         plt.show()
 
-        mask = np.moveaxis(mask, 0, 1)
+        mask = np.moveaxis(mask, 0, 1).astype(np.uint8)
         
 
         # cv2.imwrite(f"masks/ima")
