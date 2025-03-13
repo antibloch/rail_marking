@@ -49,23 +49,10 @@ def main():
         mask, overlay = segmentation_handler.run(image, only_mask=False)
         plt.imshow(overlay)
         plt.show()
-        image = cv2.resize(image, (512, 1024))
-        image = np.moveaxis(image, 0, 1)
+
+        mask = np.moveaxis(mask, 0, 1)
         
-        print(image.shape)
-        print(mask.shape)
 
-        mask [(mask ==0) | (mask == 1)] = 255
-        mask[mask == 2] = 0
-        mask = mask.astype("uint8")
-
-        plt.figure(figsize=(12,9))
-        plt.subplot(1,2,1)
-        plt.imshow(image)
-
-        plt.subplot(1,2,2)
-        plt.imshow(mask)
-        plt.show()
         # cv2.imwrite(f"masks/ima")
         cv2.imwrite(f"masks/{img_name}", mask)
 
